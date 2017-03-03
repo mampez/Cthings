@@ -9,15 +9,33 @@
 //-----------------------------------------------------------------------------
 
 /* 
- * #define ARRAY_LONG 32
- * SI_SEGMENT_VARIABLE(SendString[ARRAY_LONG], uint8_t, SI_SEG_XDATA);
- * SI_SEGMENT_VARIABLE(buffer[4], uint8_t, SI_SEG_XDATA);
+ * #define TX_BUFFER_LENGTH 25
 */
 
 /*
- * strcpy(SendString,"AT$SF=");
- * strncat(SendString,buffer,ARRAY_LONG);
- * strncat(SendString,",0\r",ARRAY_LONG);
+*	SI_SEGMENT_VARIABLE(tx_buffer[TX_BUFFER_LENGTH], uint8_t, SI_SEG_XDATA);
+
+*	char tempArray[6]={0,0,0,0,0,0};
+*	char batArray[6]={0,0,0,0,0,0};
+*	char temporal[6]={0,0,0,0,0};
+*	int i,j=0;
+*
+*	sprintf(tempArray, "%x", temperature);
+*	sprintf(batArray, "%x", battery);
+*
+*	//temperature 3 character
+*	for(i=0;i<3;i++){
+*	   temporal[i]=tempArray[i];
+*	}
+*
+*	//battery 3 character
+*	for(j=0;j<2;j++){
+*	  temporal[i+j]=batArray[j];
+*	}
+*
+*	strcpy(tx_buffer,"AT$SF=A0900");
+*	strncat(tx_buffer,temporal,TX_BUFFER_LENGTH);
+*	strncat(tx_buffer,"\r",TX_BUFFER_LENGTH);
 */
 
 //-----------------------------------------------------------------------------
