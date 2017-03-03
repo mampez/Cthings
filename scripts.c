@@ -3,6 +3,23 @@
 #include <stdlib.h>
 #include <ctype.h>
 
+
+//-----------------------------------------------------------------------------
+// Scripts
+//-----------------------------------------------------------------------------
+
+/* #define ARRAY_LONG 32
+ * SI_SEGMENT_VARIABLE(SendString[ARRAY_LONG], uint8_t, SI_SEG_XDATA);
+ * SI_SEGMENT_VARIABLE(buffer[4], uint8_t, SI_SEG_XDATA);
+*/
+		/*
+		strcpy(SendString,"AT$SF=");
+		strncat(SendString,buffer,ARRAY_LONG);
+		strncat(SendString,",0\r",ARRAY_LONG);
+		*/
+
+
+
 //-----------------------------------------------------------------------------
 // Functions
 //-----------------------------------------------------------------------------
