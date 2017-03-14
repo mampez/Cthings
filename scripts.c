@@ -71,27 +71,31 @@ uint16_t str_to_decimal(const char *s){
     return result;
 }
 	
+	
 int str_to_decimalSign(const char *s) {
 
 	/*
-	 * Convert a number string 
-	 * into a int
+	 * Convert a number string ('-018')
+	 * into a signed int 0xffffffee (-18)
 	 * */
 
 	int result = 0;
 	int sign = 1;
 
+	/*Check sign*/
+	if ((unsigned char)*s == '-'){
+				sign = -1;
+	}
+
+	/*Move pointer*/
+	s = s+1;
+
 	for (; *s; ++s) {
 		/* Only process recognized digits */
-		if (isdigit((unsigned char) *s)){
+		if (isdigit((unsigned char) *s))
 			result = 10 * result + (*s - '0');
-		}
-		else if ((unsigned char)*s == '-'){
-			sign = -1;
-		}
 	}
 
 	return result * sign;
 }
-    
     
