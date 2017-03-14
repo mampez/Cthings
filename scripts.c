@@ -70,5 +70,28 @@ uint16_t str_to_decimal(const char *s){
     }
     return result;
 }
+	
+int str_to_decimalSign(const char *s) {
+
+	/*
+	 * Convert a number string 
+	 * into a int
+	 * */
+
+	int result = 0;
+	int sign = 1;
+
+	for (; *s; ++s) {
+		/* Only process recognized digits */
+		if (isdigit((unsigned char) *s)){
+			result = 10 * result + (*s - '0');
+		}
+		else if ((unsigned char)*s == '-'){
+			sign = -1;
+		}
+	}
+
+	return result * sign;
+}
     
     
