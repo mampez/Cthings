@@ -71,6 +71,35 @@ uint16_t str_to_decimal(const char *s){
     return result;
 }
 	
+uint16_t str_to_decimalSignUc(const char *s){
+
+	/*
+	 * Convert a number string ('-0187')
+	 * into a uint16_t (187 --> 0xBB) an then
+	 * codify the sign, uint16_t (32955 --> 0x80BB)
+	 * */
+
+	int result = 0;
+	bool sign = false;
+
+	/*Check sign*/
+	if ((unsigned char)*s == '-')
+		sign = true;
+
+	/*forward pointer*/
+	s = s+1;
+
+	for (; *s; ++s) {
+		/* Only process recognized digits */
+		if (isdigit((unsigned char) *s))
+			result = 10 * result + (*s - '0');
+	}
+
+	if (sign == true)
+		result = 0x8000 + result;
+
+	return result;	
+	
 	
 int str_to_decimalSign(const char *s) {
 
