@@ -62,7 +62,7 @@ uint16_t str_to_decimal(const char *s){
 	 * into a uint16_t 0xD34 (3800)
 	 * */
 
-    int result = 0;
+    uint16_t result = 0;
     for (; *s; ++s) {
         /* Only process recognized digits */
         if (isdigit((unsigned char)*s))
@@ -82,12 +82,11 @@ uint16_t str_to_decimalSignUc(const char *s){
 	uint16_t result = 0;
 	bool sign = false;
 
-	/*Check sign*/
-	if ((unsigned char)*s == '-')
+	/*Check Sign*/
+	if ((unsigned char)*s == '-'){
 		sign = true;
-
-	/*forward pointer*/
-	s = s+1;
+		s = s+1;
+	}
 
 	for (; *s; ++s) {
 		/* Only process recognized digits */
@@ -98,7 +97,9 @@ uint16_t str_to_decimalSignUc(const char *s){
 	if (sign == true)
 		result = 0x8000 + result;
 
-	return (uint16_t)result;	
+	return result;
+
+}
 	
 	
 int str_to_decimalSign(const char *s) {
