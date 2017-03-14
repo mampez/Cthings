@@ -79,7 +79,7 @@ uint16_t str_to_decimalSignUc(const char *s){
 	 * codify the sign, uint16_t (32955 --> 0x80BB)
 	 * */
 
-	int result = 0;
+	uint16_t result = 0;
 	bool sign = false;
 
 	/*Check sign*/
@@ -98,7 +98,7 @@ uint16_t str_to_decimalSignUc(const char *s){
 	if (sign == true)
 		result = 0x8000 + result;
 
-	return result;	
+	return (uint16_t)result;	
 	
 	
 int str_to_decimalSign(const char *s) {
