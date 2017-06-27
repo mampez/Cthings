@@ -1,3 +1,3 @@
 # Cthings
 
-Some useful scripts for C
+Some useful C scripts to work with strings, arrays and hex/decimal conversions. 
