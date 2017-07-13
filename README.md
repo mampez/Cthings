@@ -1,6 +1,6 @@
 # Cthings
 
-Some useful C scripts to work with strings, arrays and hex/decimal conversions without offical libraries. For example, with uCs such as EFM8, CC2531, CC2538, etc.
+Some useful C functions to work with strings, arrays and hex/decimal conversions without the official libraries. 
 
 Do you need to save memory avoiding official functions? Try them!
 
