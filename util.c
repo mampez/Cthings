@@ -1,5 +1,5 @@
 /******************************************************************************
- * By Manuel Menchaca
+ * Copyright (c) 2017 Jesús Ibañez and Manuel Menchaca
  *
  * C functions (very useful!)
  *****************************************************************************/
@@ -11,14 +11,8 @@
 #include <util.h>
 
 //-----------------------------------------------------------------------------
-// Constants
-//-----------------------------------------------------------------------------
-
-
-//-----------------------------------------------------------------------------
 // Functions
 //-----------------------------------------------------------------------------
-
 int my_isdigit(char c) {
 
 	/*
@@ -38,7 +32,6 @@ int my_isdigit(char c) {
 
     return (c >= '0') && (c <= '9');
 }
-
 
 
 uint16_t string_to_hexInt(const char *s, uint8_t inputLength)
@@ -64,31 +57,28 @@ uint16_t string_to_hexInt(const char *s, uint8_t inputLength)
 	 *	- '187' --> 0x00BB
 	 */
 
+	// Variable definition
 	uint16_t result = 0;
 	uint8_t digitIndex = 0;
 	bool sign = false;
 
-	/*Check Sign*/
-	if ((unsigned char)*s == '-'){
+	// Check sign
+	if ((unsigned char)*s == '-') {
 		sign = true;
 		s = s+1;
 		digitIndex = digitIndex + 1;
 	}
-
+	// Process only recognized digits
 	for (; *s; ++s) {
-		/* Only process recognized digits */
-		if ((my_isdigit((unsigned char) *s)) && (digitIndex < inputLength)){
+		if ((my_isdigit((unsigned char) *s)) && (digitIndex < inputLength)) {
 			result = 10 * result + (*s - '0');
 			digitIndex = digitIndex + 1;
 		}
 	}
-
-	/*Encode the sign!*/
+	// Encode the sign with 0x8000
 	if (sign == true)
 		result = 0x8000 + result;
-
 	return result;
-
 }
 
 void int_to_hexString(const char *s, uint16_t data_in, uint8_t numChar)
@@ -113,6 +103,7 @@ void int_to_hexString(const char *s, uint16_t data_in, uint8_t numChar)
 	 *  - 0x3344 --> '3344'
 	 */
 
+	// Variable definition
     uint8_t i;
     char *p = s+numChar;
     char aux;
@@ -121,13 +112,13 @@ void int_to_hexString(const char *s, uint16_t data_in, uint8_t numChar)
     for (i = 0 ; i<numChar ; i++) {
         aux = (char)(data_in & 0x000f) + '0';
         if (aux > '9')
-            aux += 'a' - '0' -10;
+            aux += 'a' - '0' - 10;
         *p-- = aux;
         data_in = data_in >> 4;
     }
 }
 
-uint16_t hexString_to_int(const char *s){
+uint16_t hexString_to_int(const char *s) {
 
 	/*
 	 *	Function:  hexString_to_int
@@ -146,36 +137,37 @@ uint16_t hexString_to_int(const char *s){
 	 *  - "1234"   --> 0x1234
 	 */
 
+	// Variable definition
 	char *p;
 	char c;
 	uint16_t value = 0;
 	uint8_t n = 0;
 	uint8_t i;
 
-	p=s;
-	while (*p++ != 0){    // finds the length of the input string
+	p = s;
+	while (*p++ != 0) {    // finds the length of the input string
 		n++;
 	}
-	if ( n>4 ){    // n is the number of chars to be converted (4 maximum)
+	if (n > 4) {    // n is the number of chars to be converted (4 maximum)
 		n = 4;
 	}
-	p -= n+1;    // now p points to the most significant char to be converted
+	p -= n + 1;    // now p points to the most significant char to be converted
 
-	for ( i=0 ; i<n ; i++ ){
+	for (i = 0 ; i < n ; i++ ) {
 		value = value << 4;
 		c = *p++;
-		if (c <= '9'){
-			c = c -'0';
+		//Convert
+		if (c <= '9') {
+			c = c - '0';
 		}
-		else if (c <= 'F'){
-			c = c -'A'+10;
+		else if (c <= 'F') {
+			c = c - 'A' + 10;
 		}
-		else{
-			c = c -'a'+10;
+		else {
+			c = c - 'a' + 10;
 		}
 		value += (uint16_t)c ;
 	}
-
 	return value;
 }
 
@@ -209,17 +201,13 @@ char* my_strncpy(char* destination, const char* source, size_t num)
 
 	// copy first num characters of C-string pointed by source
 	// into the array pointed by destination
-	while (*source && num--)
-	{
+	while (*source && num--) {
 		*destination = *source;
 		destination++;
 		source++;
 	}
-
 	// null terminate destination string
 	*destination = '\0';
-
-	// destination is returned by standard strncpy()
 	return ptr;
 }
 
@@ -243,8 +231,8 @@ void my_strcpy(char *destination, const char *source)
 	 */
 
     do{
-	        *destination++ = *source;
-	    }while(*source++ != '\0');
+	    *destination++ = *source;
+	}while(*source++ != '\0');
 }
 
 int my_strcmp (const char *s1, const char *s2)
@@ -268,20 +256,23 @@ int my_strcmp (const char *s1, const char *s2)
 	 *
 	 */
 
+	// Variable definition
     const unsigned char *p1 = (const unsigned char *)s1;
     const unsigned char *p2 = (const unsigned char *)s2;
 
     while (*p1 != '\0') {
-        if (*p2 == '\0') return  1;
-        if (*p2 > *p1)   return -1;
-        if (*p1 > *p2)   return  1;
-
+        if (*p2 == '\0')
+        	return  1;
+        if (*p2 > *p1)
+        	return -1;
+        if (*p1 > *p2)
+        	return  1;
+        //Increment pointers
         p1++;
         p2++;
     }
-
-    if (*p2 != '\0') return -1;
-
+    if (*p2 != '\0')
+    	return -1;
     return 0;
 }
 
@@ -310,24 +301,21 @@ char* my_strstr(char *str, char *substr)
 	 *
 	 */
 
-	  while (*str)
-	  {
-		    char *firstOccurrence = str;
-		    char *substring = substr;
-
-		    // If first character of sub string match, check for whole string
-		    while (*str && *substring && *str == *substring)
-			{
-			      str++;
-			      substring++;
-		    }
-		    // If complete sub string match, return starting address
-		    if (!*substring)
-		    	  return firstOccurrence;
-
-		    str = firstOccurrence + 1;	// Increment main string
-	  }
-	  return NULL;
+	while (*str) {
+		char *firstOccurrence = str;
+		char *substring = substr;
+		// If first character of sub string match, check for whole string
+		while (*str && *substring && *str == *substring) {
+			  str++;
+			  substring++;
+		}
+		// If complete sub string match, return starting address
+		if (!*substring)
+			return firstOccurrence;
+		// Increment main string
+		str = firstOccurrence + 1;
+	}
+	return NULL;
 }
 
 void *my_memcpy(void * dst, void const * src, size_t len)
@@ -349,14 +337,13 @@ void *my_memcpy(void * dst, void const * src, size_t len)
 	 *  - Nothing
 	 */
 
+    // Variable definition
     char * pDst = (char *) dst;
     char const * pSrc = (char const *) src;
 
-    while (len--)
-    {
+    while (len--) {
         *pDst++ = *pSrc++;
     }
-
     return (dst);
 }
 
@@ -380,10 +367,12 @@ void *my_memset(void *str, char c, size_t n)
 	 *  - Nothing
 	 */
 
+	// Variable definition
     size_t i;
 
     for (i = 0; i < n; ++i)
         ((char *) str)[i] = c;
+
     return str;
 }
 
@@ -405,18 +394,17 @@ void my_strcat (char* destination, const char* source)
 	 *  - Nothing
 	 */
 
-  while(*destination != '\0') /* finding the end of the string */
-  {
-	  destination++;
-  }
+	//Find the end of the string
+	while(*destination != '\0') {
+		destination++;
+	}
+	*destination = *source;
 
-  *destination = *source;
-  while(*destination != '\0')
-  {
-	  destination++;
-    source++;
-    *destination = *source;
-  }
+	while(*destination != '\0') {
+		destination++;
+		source++;
+		*destination = *source;
+	 }
 }
 
 size_t my_strlen(const char * s)
@@ -436,11 +424,12 @@ size_t my_strlen(const char * s)
 	 *  - return the string length
 	 */
 
-   char * ptr;
+	// Variable definition
+	char * ptr;
 
-   for (ptr = s; *ptr; ++ptr);
+	for (ptr = s; *ptr; ++ptr);
 
-   return ptr - s;
+	return ptr - s;
 }
 
 void resetEFM8()
@@ -458,6 +447,5 @@ void resetEFM8()
 	 */
 
 	*((uint8_t SI_SEG_DATA *)0x00) = 0xA5;
-	RSTSRC = 0x12; //SWRSF, PORSF
-
+	RSTSRC = 0x12; // SWRSF, PORSF
 }
