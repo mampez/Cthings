@@ -1,6 +1,6 @@
 # Cthings
 
-Some useful C functions to work with strings, arrays and hex/decimal conversions without the official libraries. 
+Some useful C functions to work with strings, arrays and hex/decimal conversions.
 
 Do you need to save memory avoiding official functions? Try them!
 
