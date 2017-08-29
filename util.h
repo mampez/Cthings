@@ -31,7 +31,7 @@
  * @param *c
  *
  ******************************************************************************/
-int my_isdigit(char c);
+int my_isdigit ( char c );
 
 /***************************************************************************//**
  * @brief string_to_hexInt
@@ -39,7 +39,7 @@ int my_isdigit(char c);
  * @param *s, inputLenght
  *
  ******************************************************************************/
-uint16_t string_to_hexInt (const char *s, uint8_t inputLength);
+uint16_t string_to_hexInt ( const char *s, uint8_t inputLength );
 
 /***************************************************************************//**
  * @brief hexString_to_int
@@ -47,7 +47,7 @@ uint16_t string_to_hexInt (const char *s, uint8_t inputLength);
  * @param *s
  *
  ******************************************************************************/
-uint16_t hexString_to_int (const char *s);
+uint16_t hexString_to_int ( const char *s );
 
 /***************************************************************************//**
  * @brief int_to_hexString
@@ -55,7 +55,7 @@ uint16_t hexString_to_int (const char *s);
  * @param *s, data_in, numChar (uint8--> 2, uint16 --> 4)
  *
  ******************************************************************************/
-void int_to_hexString (const char *s, uint16_t data_in, uint8_t numChar);
+void int_to_hexString ( const char *s, uint16_t data_in, uint8_t numChar );
 
 /***************************************************************************//**
  * @brief my_strlen
@@ -63,7 +63,7 @@ void int_to_hexString (const char *s, uint16_t data_in, uint8_t numChar);
  * @param *s
  *
  ******************************************************************************/
-size_t my_strlen (const char *s);
+size_t my_strlen ( const char *s );
 
 /***************************************************************************//**
  * @brief my_strstr
@@ -71,14 +71,14 @@ size_t my_strlen (const char *s);
  * @param char *str, char *substr
  *
  ******************************************************************************/
-char* my_strstr (char *str, char *substr);
+char* my_strstr ( char *str, char *substr );
 /***************************************************************************//**
  * @brief my_strncpy
  *
  * @param char* destination, const char* source, size_t num
  *
  ******************************************************************************/
-char* my_strncpy(char* destination, const char* source, size_t num);
+char* my_strncpy ( char* destination, const char* source, size_t num );
 
 /***************************************************************************//**
  * @brief my_memcpy
@@ -86,7 +86,7 @@ char* my_strncpy(char* destination, const char* source, size_t num);
  * @param void * dst, void const * src, size_t len
  *
  ******************************************************************************/
-void * my_memcpy(void * dst, void const * src, size_t len);
+void * my_memcpy ( void * dst, void const * src, size_t len );
 
 /***************************************************************************//**
  * @brief my_memset
@@ -94,7 +94,7 @@ void * my_memcpy(void * dst, void const * src, size_t len);
  * @param void *str, char c, size_t n
  *
  ******************************************************************************/
-void *my_memset(void *str, char c, size_t n);
+void *my_memset ( void *str, char c, size_t n );
 
 /***************************************************************************//**
  * @brief my_strcpy
@@ -102,7 +102,7 @@ void *my_memset(void *str, char c, size_t n);
  * @param char *destination, const char *source
  *
  ******************************************************************************/
-void my_strcpy(char *destination, const char *source);
+void my_strcpy ( char *destination, const char *source );
 
 /***************************************************************************//**
  * @brief my_strcat
@@ -110,7 +110,7 @@ void my_strcpy(char *destination, const char *source);
  * @param char* destination, const char* source
  *
  ******************************************************************************/
-void my_strcat (char* destination, const char* source);
+void my_strcat ( char* destination, const char* source );
 
 /***************************************************************************//**
  * @brief my_strcmp
@@ -118,7 +118,7 @@ void my_strcat (char* destination, const char* source);
  * @param *s1, *s2
  *
  ******************************************************************************/
-int my_strcmp (const char *s1, const char *s2);
+int my_strcmp ( const char *s1, const char *s2 );
 
 /***************************************************************************//**
  * @brief resetEFM8
