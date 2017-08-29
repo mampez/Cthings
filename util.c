@@ -13,7 +13,7 @@
 //-----------------------------------------------------------------------------
 // Functions
 //-----------------------------------------------------------------------------
-int my_isdigit(char c) {
+int my_isdigit ( char c ) {
 
 	/*
 	 *	Function:  my_isdigit
@@ -34,8 +34,7 @@ int my_isdigit(char c) {
 }
 
 
-uint16_t string_to_hexInt(const char *s, uint8_t inputLength)
-{
+uint16_t string_to_hexInt ( const char *s, uint8_t inputLength ) {
 	/*
 	 *	Function:  string_to_hexInt
 	 * ------------------------------------------------------------------------
@@ -81,8 +80,7 @@ uint16_t string_to_hexInt(const char *s, uint8_t inputLength)
 	return result;
 }
 
-void int_to_hexString(const char *s, uint16_t data_in, uint8_t numChar)
-{
+void int_to_hexString ( const char *s, uint16_t data_in, uint8_t numChar ) {
 	/*
 	 *	Function:  int_to_hexString
 	 * ------------------------------------------------------------------------
@@ -118,7 +116,7 @@ void int_to_hexString(const char *s, uint16_t data_in, uint8_t numChar)
     }
 }
 
-uint16_t hexString_to_int(const char *s) {
+uint16_t hexString_to_int ( const char *s ) {
 
 	/*
 	 *	Function:  hexString_to_int
@@ -171,9 +169,7 @@ uint16_t hexString_to_int(const char *s) {
 	return value;
 }
 
-
-char* my_strncpy(char* destination, const char* source, size_t num)
-{
+char* my_strncpy ( char* destination, const char* source, size_t num ) {
 	/*
 	 * Function:  my_strncpy
 	 * ------------------------------------------------------------------------
@@ -211,8 +207,7 @@ char* my_strncpy(char* destination, const char* source, size_t num)
 	return ptr;
 }
 
-void my_strcpy(char *destination, const char *source)
-{
+void my_strcpy ( char *destination, const char *source ) {
 	/*
 	 *	Function:  my_strcpy
 	 * ------------------------------------------------------------------------
@@ -235,8 +230,7 @@ void my_strcpy(char *destination, const char *source)
 	}while(*source++ != '\0');
 }
 
-int my_strcmp (const char *s1, const char *s2)
-{
+int my_strcmp ( const char *s1, const char *s2 ) {
 	/*
 	 * 	 Function:  my_strcmp
 	 * ------------------------------------------------------------------------
@@ -276,8 +270,7 @@ int my_strcmp (const char *s1, const char *s2)
     return 0;
 }
 
-char* my_strstr(char *str, char *substr)
-{
+char* my_strstr ( char *str, char *substr ) {
 	/*
 	 *	Function:  my_strstr
 	 * ------------------------------------------------------------------------
@@ -318,8 +311,7 @@ char* my_strstr(char *str, char *substr)
 	return NULL;
 }
 
-void *my_memcpy(void * dst, void const * src, size_t len)
-{
+void *my_memcpy ( void * dst, void const * src, size_t len ) {
 	/*
 	 *	Function:  my_memcpy
 	 * ------------------------------------------------------------------------
@@ -347,8 +339,7 @@ void *my_memcpy(void * dst, void const * src, size_t len)
     return (dst);
 }
 
-void *my_memset(void *str, char c, size_t n)
-{
+void *my_memset ( void *str, char c, size_t n ) {
 	/*
 	 *	Function:  my_memset
 	 * ------------------------------------------------------------------------
@@ -376,8 +367,7 @@ void *my_memset(void *str, char c, size_t n)
     return str;
 }
 
-void my_strcat (char* destination, const char* source)
-{
+void my_strcat ( char* destination, const char* source ) {
 	/*
 	 *	Function:  my_strcat
 	 * ------------------------------------------------------------------------
@@ -407,8 +397,7 @@ void my_strcat (char* destination, const char* source)
 	 }
 }
 
-size_t my_strlen(const char * s)
-{
+size_t my_strlen ( const char * s ) {
 	/*
 	 *	Function:  my_strlen
 	 * ------------------------------------------------------------------------
@@ -432,8 +421,7 @@ size_t my_strlen(const char * s)
 	return ptr - s;
 }
 
-void resetEFM8()
-{
+void resetEFM8 ( void ) {
 	/*
 	 *	Function:  resetEFM8
 	 * ------------------------------------------------------------------------
