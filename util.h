@@ -9,7 +9,6 @@
 //-----------------------------------------------------------------------------
 // Includes
 //-----------------------------------------------------------------------------
-#include <SI_EFM8SB1_Register_Enums.h>                  // SFR declarations
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
