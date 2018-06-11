@@ -4,4 +4,5 @@ Some C functions to work with strings, arrays and hex/decimal conversions.
 
 ## Detail info
 
-@menchopez 2017
+@_manuelmenchaca 2017
+
